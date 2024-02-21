@@ -1,0 +1,24 @@
+.MMM-My-Team .centered {
+  text-align: center;
+}
+
+.MMM-My-Team .team-cell {
+  width: 100px;
+}
+
+.MMM-My-Team .team-cell.-home {
+  padding-right: 20px;
+  text-align: left;
+}
+
+.MMM-My-Team .team-cell.-away {
+  padding-left: 20px;
+  text-align: right;
+}
+
+.MMM-My-Team .team-icon {
+  width: 20px;
+  margin-top: 4px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
