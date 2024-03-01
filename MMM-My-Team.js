@@ -285,7 +285,7 @@ Module.register("MMM-My-Team", {
 
         switch (game.status) {
           case "FINISHED":
-            if (game.score.extraTime?.home) {
+            if (game.score.extraTime?.homeTeam) {
               gameTimeCell.innerHTML =
                 game.score.extraTime.home +
                 " : " +
@@ -296,21 +296,23 @@ Module.register("MMM-My-Team", {
               gameTimeCell.appendChild(minNode);
             } else {
               gameTimeCell.innerHTML =
-                game.score.fullTime.home + " : " + game.score.fullTime.away;
+                game.score.fullTime.homeTeam +
+                " : " +
+                game.score.fullTime.awayTeam;
             }
             break;
           case "IN_PLAY":
-            if (game.score.extraTime?.home) {
+            if (game.score.extraTime?.homeTeam) {
               gameTimeCell.innerHTML =
-                game.score.extraTime.home +
+                game.score.extraTime.homeTeam +
                 " : " +
-                game.score.extraTime.away +
+                game.score.extraTime.awayTeam +
                 " ";
-            } else if (game.score.fullTime.home) {
+            } else if (game.score.fullTime.homeTeam) {
               gameTimeCell.innerHTML =
-                game.score.fullTime.home +
+                game.score.fullTime.homeTeam +
                 " : " +
-                game.score.fullTime.away +
+                game.score.fullTime.awayTeam +
                 " ";
             }
 
@@ -320,13 +322,18 @@ Module.register("MMM-My-Team", {
             break;
           case "PAUSED":
             gameTimeCell.innerHTML =
-              game.score.halfTime.home + " : " + game.score.halfTime.away + " ";
+              game.score.halfTime.homeTeam +
+              " : " +
+              game.score.halfTime.awayTeam +
+              " ";
             var htNode = document.createElement("strong");
             htNode.innerText = "(HT)";
             gameTimeCell.appendChild(htNode);
             break;
           default:
-            gameTimeCell.innerHTML = " " + clock + " ";
+            var date = new Date(game.utcDate);
+            gameTimeCell.innerHTML =
+              pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
             break;
         }
 
